@@ -1,5 +1,6 @@
 package tests;
 
+import core.ConfigTests;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -14,6 +15,8 @@ import steps.MainPageSteps;
 import steps.ProductPageSteps;
 import steps.SearchResultsPageSteps;
 
+import java.io.IOException;
+
 
 public abstract class BaseTest {
 
@@ -22,14 +25,18 @@ public abstract class BaseTest {
     public static ProductPageSteps productPage;
     public static SearchResultsPageSteps searchResultsPage;
     public static CartPageSteps cartPage;
+    public static ConfigTests configTests;
+
 
     @BeforeClass
-    public static void initializeDriver() {
+    public static void initializeDriver() throws IOException {
         driver = new FirefoxDriver();
+        configTests = new ConfigTests();
+        configTests.loadProperties();
     }
 
     @BeforeClass
-    public static void initializePages() {
+    public static void initializePages() throws IOException {
         mainPage = new MainPageSteps(new MainPage(driver));
         productPage = new ProductPageSteps(new ProductPage(driver));
         searchResultsPage = new SearchResultsPageSteps(new SearchResultsPage(driver));

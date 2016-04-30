@@ -1,14 +1,39 @@
 package core;
 
 
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Properties;
+
 public class ConfigTests {
 
-    public static final int IMPLICITY_WAIT_TIME = 10;
-    public static final int FLUENT_WAIT_TIMEOUT = 10;
-    public static final int FLUENT_WAIT_POLLING = 2;
-    public static final String BASE_URL = "http://gsmserver.com";
-    public static final String CART_PAGE_URL = "/cart/";
-    public static final String PRODUCT_PAGE_URL = "/item/boxes-and-dongles/medusa-pro-box/";
-    public static final String SEARCH_PRODUCT_NAME = "Camera for Apple iPhone 5 Cell Phone";
+    public static int IMPLICITY_WAIT_TIME;
+    public static int FLUENT_WAIT_TIMEOUT;
+    public static int FLUENT_WAIT_POLLING;
+    public static String BASE_URL;
+    public static String CART_PAGE_URL;
+    public static String PRODUCT_PAGE_URL;
+    public static String SEARCH_PRODUCT_NAME;
+
+    public void loadProperties() throws IOException {
+        Properties properties = new Properties();
+        File file = new File("/home/sroman/Projects/GSMServerUITests/src/main/resources/config.properties");
+
+        properties.load(new FileReader(file));
+
+        this.IMPLICITY_WAIT_TIME = Integer.parseInt(properties.getProperty("IMPLICITY_WAIT_TIME"));
+        this.FLUENT_WAIT_TIMEOUT = Integer.parseInt(properties.getProperty("FLUENT_WAIT_TIMEOUT"));
+        this.FLUENT_WAIT_POLLING = Integer.parseInt(properties.getProperty("FLUENT_WAIT_POLLING"));
+        this.BASE_URL = properties.getProperty("BASE_URL");
+        this.CART_PAGE_URL = properties.getProperty("CART_PAGE_URL");
+        this.PRODUCT_PAGE_URL = properties.getProperty("PRODUCT_PAGE_URL");
+        this.SEARCH_PRODUCT_NAME = properties.getProperty("SEARCH_PRODUCT_NAME");
+
+
+
+
+
+    }
 
 }

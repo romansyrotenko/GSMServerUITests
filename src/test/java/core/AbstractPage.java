@@ -17,7 +17,6 @@ public class AbstractPage {
     public WebDriver driver;
     public Wait wait;
 
-
     public AbstractPage(WebDriver driver) {
         this.driver = driver;
         driver.manage().timeouts().implicitlyWait(IMPLICITY_WAIT_TIME, TimeUnit.SECONDS);
