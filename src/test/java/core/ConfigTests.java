@@ -18,7 +18,8 @@ public class ConfigTests {
 
     public void loadProperties() throws IOException {
         Properties properties = new Properties();
-        File file = new File("/home/sroman/Projects/GSMServerUITests/src/main/resources/config.properties");
+        File resourcesDirectory = new File("src/main/resources/config.properties");
+        File file = new File(resourcesDirectory.getAbsolutePath());
 
         properties.load(new FileReader(file));
 
@@ -29,10 +30,6 @@ public class ConfigTests {
         this.CART_PAGE_URL = properties.getProperty("CART_PAGE_URL");
         this.PRODUCT_PAGE_URL = properties.getProperty("PRODUCT_PAGE_URL");
         this.SEARCH_PRODUCT_NAME = properties.getProperty("SEARCH_PRODUCT_NAME");
-
-
-
-
 
     }
 
