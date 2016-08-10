@@ -1,6 +1,5 @@
 package core;
 
-
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
@@ -20,7 +19,6 @@ public class ConfigTests {
         Properties properties = new Properties();
         File resourcesDirectory = new File("src/main/resources/config.properties");
         File file = new File(resourcesDirectory.getAbsolutePath());
-
         properties.load(new FileReader(file));
 
         this.IMPLICITY_WAIT_TIME = Integer.parseInt(properties.getProperty("IMPLICITY_WAIT_TIME"));
